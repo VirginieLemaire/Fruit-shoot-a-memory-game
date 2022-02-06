@@ -15,6 +15,15 @@ const app = {
         totalPairsToFind: 0,
     },
 
+    // DONNEES DU TIMER
+    timer: {
+        /* Définir la largeur de départ du curseur de progression :
+        correspond à un % de app.config.givenTime */
+        width: 0,
+        // Temps écoulé en secondes
+        result: 0,
+    },
+
     // DONNEES DE LA PARTIE
     partyData: {
         // Liste des fruits de la partie
@@ -40,9 +49,15 @@ const app = {
     init: () => {
         // dessiner le plateau
         app.drawBoard();
-        //écouter
-        app.listen();
+        // réagir aux interactions avec l'utilisateur
+        app.play();
     },
+    // PLAY 
+    play: () => {
+        app.listen();
+        app.countdown();
+    },
+
     /*  MISE EN PLACE DU PLATEAU ET DES CARTES  */  
     // Dessiner le plateau de jeu
     drawBoard : () => {
@@ -223,6 +238,33 @@ const app = {
             console.log( "dans le else, nb de fruits à comparer: ",app.clickedData.fruitsToCompare.length);
         }
 
+    },
+
+    /* GESTION DU TIMER */
+
+    // Faire grandir la barre de progression
+    countdown : () => {
+        console.log("Temps imparti : ", app.config.givenTime, " secondes");
+
+        const grow = () => {
+            if (app.timer.width <100) {
+                app.timer.width ++;
+                app.timer.result = app.config.givenTime * app.timer.width/100;
+                // la barre de décompte du temps
+                const progressBar= document.querySelector("span");
+                //progressBar.textContent = `${app.timer.width}`;
+                progressBar.style.width = `${app.timer.width}%`;
+            } else {
+                console.log(app.timer.result, " secondes");
+                // Prévenir
+                alert("Aïe, c'est perdu !");
+                // Stopper le chrono
+                clearInterval(interval);
+            }
+        };
+        /* Je veux augmenter la barre de progression toutes les secondes :
+        je multiplie le temps imparti par 10 (1000 ms / 100%) */
+        const interval = setInterval(grow, app.config.givenTime*10);
     },
 
 
