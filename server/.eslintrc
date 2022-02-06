@@ -1,0 +1,24 @@
+{
+    "env": {
+        "node": true,
+        "es6": true
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+        "indent": [
+            "warn", //avertissement
+            4, //pas  indenté avec 4 espaces
+            { "SwitchCase": 1 } //niveau d’indentation supplémentaire pour les case à l’intérieur de leur switch
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "eqeqeq": "warn", //opérateur d’égalité non stricte (tel que ==)
+        "multiline-ternary": ["warn", "always-multiline"] //les retours chariot ne se situent pas au niveau des opérateurs ? et :
+    }
+}

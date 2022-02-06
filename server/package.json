@@ -1,0 +1,26 @@
+{
+  "name": "back-memory-game",
+  "version": "1.0.0",
+  "description": "partie serveur du jeu de memory pour la persistance des données de chrono",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Virginie Lemaire",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/VirginieLemaire/test-memory-game.git"
+  },
+  "bugs": {
+    "url": "https://github.com/VirginieLemaire/test-memory-game/issues"
+  },
+  "homepage": "https://github.com/VirginieLemaire/test-memory-game#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "pg": "^8.7.3"
+  }
+}
