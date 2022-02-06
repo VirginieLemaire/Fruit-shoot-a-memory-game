@@ -47,6 +47,8 @@ const app = {
 
     /*  INITIALISATION DU JEU  */
     init: () => {
+        // Afficher les informations de temps
+        app.giveChronos();
         // dessiner le plateau
         app.drawBoard();
         // réagir aux interactions avec l'utilisateur
@@ -265,6 +267,19 @@ const app = {
         /* Je veux augmenter la barre de progression toutes les secondes :
         je multiplie le temps imparti par 10 (1000 ms / 100%) */
         const interval = setInterval(grow, app.config.givenTime*10);
+    },
+
+    /* GERER LES INFOS DE CHRONO */
+
+    giveChronos: () => {
+        // 1. Afficher le temps imparti
+        // 1.a récupérer l'elément DOM
+        const givenTime = document.getElementById('given');
+        // 1.b lui ajouter du texte
+        givenTime.textContent= `${app.config.givenTime} s.`;
+
+        // 2. Affficher le meilleur chrono
+
     },
 
 
