@@ -304,9 +304,22 @@ const app = {
             console.trace(error);
         }
     },
-
-
- 
+    /**
+     * Méthode pour mettre à jour le nouveau meilleur
+     * chrono en DB
+     */
+    updateBestChrono: async() => {
+        const result = await fetch('http://localhost:3000/', {
+            // Méthode http utilisée
+            method: 'PATCH',
+            // Type de données envoyées
+            headers: {'Content-Type': 'application/json;charset=utf-8'},
+            // Avec JSON.stringify on passe les données au format json
+            body: JSON.stringify({chrono: `${app.timer.result}`})
+        });
+        const check = await result.json();
+        console.log("check",check);
+    }
 };
   
   // Lancer l'initiation du jeu une fois que le DOM est lancé

@@ -17,7 +17,7 @@ class Chrono {
 
     // Récupérer le meilleur chrono
     /* La table "chrono" n'a qu'une valeur : le meilleur chrono.
-    Nous allons récupéper cette valeur.
+    Nous allons récupérer cette valeur.
     Comme il faut attendre la dialogue avec la BDD, on éxécute
     l'action en asynchrone pour ne pas bloquer l'ensemble du code */
     static async find() {
@@ -38,6 +38,18 @@ class Chrono {
             // Envoyer l'info au controller
             throw new Error(error.detail ? error.detail : error.message);
         }
+    }
+
+    /** 
+     * Mets à jour le meilleur chrono en base de données
+     * (la data à entrer passe par le construteur)
+     * @returns {int} le meilleur chrono
+     */
+    async update() {
+        console.log("je suis dans le model update");
+        const { rows } = await client.query('UPDATE chrono SET chrono=$1 WHERE id=$2 RETURNING chrono', [this.chrono, this.id]);
+        console.log("rows[0].chrono: ", rows[0].chrono);
+        return rows[0].chrono;
     }
 
 }
