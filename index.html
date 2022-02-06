@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./client/style.css">
+    <title>Memory fruits</title>
+</head>
+<body>
+    <!-- Une div pour les recevoir toutes ;p -->
+    <div class="container">
+        <!-- La partie de titre -->
+        <header class=header>
+            <h1 class="header__title">Memory fruits</h1>
+            <h2 class="header__subtitle">Le jeu de mémoire avec des fruits</h2>
+        </header>
+        <!-- L'espace de jeu -->
+        <main>
+            <div class="board">
+                <div class="board__row">
+                    <div class="board__cell">face cachée</div>
+                    <div class="board__cell">face cachée</div>
+                    <div class="board__cell">face cachée</div>
+                    <div class="board__cell">face cachée</div>
+                    <div class="board__cell">face cachée</div>
+                    <div class="board__cell">face cachée</div>
+                    <div class="board__cell">face cachée</div>
+                </div>
+                <div class="board__row">
+                    <div class="board__cell">face cachée</div>
+                    <div class="board__cell">face cachée</div>
+                    <div class="board__cell">face cachée</div>
+                    <div class="board__cell">face cachée</div>
+                    <div class="board__cell">face cachée</div>
+                    <div class="board__cell">face cachée</div>
+                    <div class="board__cell">face cachée</div>
+                </div>
+                <div class="board__row">
+                    <div class="board__cell">face cachée</div>
+                    <div class="board__cell">face cachée</div>
+                    <div class="board__cell">face cachée</div>
+                    <div class="board__cell">face cachée</div>
+                    <div class="board__cell">face cachée</div>
+                    <div class="board__cell">face cachée</div>
+                    <div class="board__cell">face cachée</div>
+                </div>
+                <div class="board__row">
+                    <div class="board__cell">face cachée</div>
+                    <div class="board__cell">face cachée</div>
+                    <div class="board__cell">face cachée</div>
+                    <div class="board__cell">face cachée</div>
+                    <div class="board__cell">face cachée</div>
+                    <div class="board__cell">face cachée</div>
+                    <div class="board__cell">face cachée</div>
+                </div>
+            </div>
+        </main>
+        <!-- L'espace de chronomètre -->
+        <div class="timer">
+            <div>
+                <p>Temps imparti</p>
+                <p class="timer__info" id="given">90 s</p>
+            </div>
+            <div class="timer__bar">
+                <span></span>
+            </div>
+            <div>
+                <p>Meilleur temps</p>
+                <p class="timer__info" id="best">67 s</p>
+            </div>
+        </div>
+    </div>
+    <script src="./client/app.js"></script>
+</body>
+</html>

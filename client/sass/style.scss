@@ -1,0 +1,112 @@
+//***** Importer les # fichiers sass *****
+@import './_variables';
+
+//***** Définir les styles *****
+/* Police de caractère */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+/* Pour maintenir les dimensions des éléments malgré le padding 
+on utilise la valeur border-box : elle contient le padding à l'intérieur
+de l'élément sans augmenter ses dimensions = design respecté.
+En utilisant "*" on l'applique à tous les éléments */
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  color: $highlight;
+}
+
+/* Le container contient toute l'application */
+.container {
+  width: 90%;
+  margin: 2rem auto;
+  text-align: center;
+  /* Les propriétés flex sont positionnées sur le parent
+   pour indiquer comment doivent se positionner les enfants */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  width: 100%;
+  background-color: $blue;
+  &__title {
+    margin-bottom: 0;
+  }
+  &__subtitle {
+    font-style: italic;
+    margin-top: 0;
+    font-weight: normal;
+  }
+}
+
+main {
+  background-color: $light-blue;
+  padding: 1rem;
+  width: 100%;
+}
+
+.board {
+  background-color: $orange;
+  padding: 1rem;
+  width: fit-content;
+  margin: auto;
+
+  &__row {
+    display: flex;
+    margin: auto;
+    width: fit-content;
+  }
+  &__cell {
+    background-color: $yellow;
+    /* l'image de référence fait 49px de large :
+    on créé des carrés de la même taille */
+    width: 100px;
+    height: 100px;
+    margin: 2px;
+    /* ajout d'un style spécial lorsque la carte
+    est cliquée */
+    &--selected {
+      background-image: url('./image/cards.png');
+      /* affichage du deuxième fruit du sprite 
+      https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Images/Implementing_image_sprites_in_CSS */
+      //background-position-y: -100px;
+    }
+  }
+}
+
+.timer {
+  width: 100%;
+  background-color: $blue;
+  display: flex;
+  justify-content: space-around;
+  &__info {
+    font-weight: bold;
+  }
+  &__bar {
+    width: 50%;
+    height: 20px;
+    margin: 2rem 0;
+    background-color: $yellow;
+    border-radius: 25px;
+    border: solid 1px $highlight;
+  }
+  & span{
+    /* l'élément span étant un élément en ligne (inline) par défaut,
+    on le change en block pour qu'il puisse s'afficher */
+    display: block;
+    height: 100%;
+    border-radius: 20px;
+    background-color: $orange;
+    /* la barre progresse chaque seconde, ajout d'une transition
+    pour que ça soit plus fluide */
+    transition: width 1s;
+  }
+}
+
+p {
+  margin-bottom: 0;
+  &~ p {
+    margin-top: 0;
+  }
+}
