@@ -15,6 +15,13 @@ Si la jauge de défilement du temps est remplie, le temps imparti est écoulé :
 
 Le meilleur chrono s'affiche sur la page. Si vous avez gagné dans un temps plus court, votre chrono deviendra le meilleur et sera affiché à la prochaine partie.
 
+## Copies d'écran
+
+![partie en cours](./Infos/partie-en-cours.png)
+![partie gagnée](./Infos/partie-gagnee.png)
+![partie perdue](./Infos/partie-perdue.png)
+
+
 ## Stack technique
 
 - HMTL
