@@ -9,8 +9,19 @@ const app = {
         totalFruits: 18,
         // Durée de la partie en secondes
         givenTime: 90,
+        // L'identifiant de la carte initialisé à 0
+        cellId: 0,
 
     },
+
+    // VERIFICATION DES PAIRES
+    clickedData: {
+        // l'id de la carte cliquée
+        getCellId: 0,
+        // Liste des cartes cliquées pour vérification des paires
+        clickedCards: [],
+    },
+
     /*  INITIALISATION DU JEU  */
     init: () => {
         // dessiner le plateau
@@ -37,11 +48,15 @@ const app = {
             // méthode pour ajouter le nombre de cartes
             for (let j = 0; j < app.config.nbCells; j++) {
                 // créer une div de cartes
-                const card = document.createElement(`div`);
+                const cell = document.createElement(`div`);
                 // ajouter la classe correspondante
-                card.classList.add(`board__cell`);
+                cell.classList.add(`board__cell`);
+                // Identifier la carte
+                app.config.cellId++;// Incrémenter l'id de la carte à chaque tour de boucle
+                cell.setAttribute('cellId',`${app.config.cellId}`);
+                
                 // l'ajouter à la ligne qui vient d'ête créée
-                row.appendChild(card); 
+                row.appendChild(cell); 
             }
         }
     },
@@ -59,9 +74,11 @@ const app = {
             event.target.classList.toggle("board__cell--selected");
     
             // 2. Stocker l'id de la carte cliquée
+            app.clickedData.getCellId = event.target.getAttribute('cellId');
+            console.log(app.clickedData.getCellId);
 
             // 3. stocker la carte cliquée
-
+            app.clickedData.clickedCards.push(event.target);
             //4. Voir si on a une paire
 
         });
