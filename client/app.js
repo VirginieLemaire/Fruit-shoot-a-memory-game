@@ -11,7 +11,8 @@ const app = {
         givenTime: 90,
         // L'identifiant de la carte initialisé à 0
         cellId: 0,
-
+        // initié à 0, sera calculé automatiquement dans chooseFruits();
+        totalPairsToFind: 0,
     },
 
     // DONNEES DE LA PARTIE
@@ -21,6 +22,8 @@ const app = {
         // Infos de la partie : un tableau d'objets comprenant l'identifiant
         // de la carte et le fruit associé
         fruitPlaceList: [],
+        // Nombre de paires trouvées (initialisé à 0)
+        found: 0,
     },
 
     // VERIFICATION DES PAIRES
@@ -29,6 +32,8 @@ const app = {
         getCellId: 0,
         // Liste des cartes cliquées pour vérification des paires
         clickedCards: [],
+        // Liste des fruits cliqués à comparer
+        fruitsToCompare: [],
     },
 
     /*  INITIALISATION DU JEU  */
@@ -145,10 +150,81 @@ const app = {
             //console.log("liste des events", app.clickedData.clickedCards);
 
             //4. Voir si on a une paire
-
+            app.isPair();
         });
         }
     },
+    // Vérifier s'il y a une paire
+    isPair: () => {
+        // Chercher le fruit correspondant à la carte
+        const findCorrespondingFruit = app.partyData.fruitPlaceList.find(element => element.cell == app.clickedData.getCellId).fruit;
+
+        // Stocker le nmr de fruit trouvé
+        app.clickedData.fruitsToCompare.push(findCorrespondingFruit);
+        console.log(`la carte nmr ${app.clickedData.getCellId} correspond au fruit nmr: ${findCorrespondingFruit}`);
+
+        // si le tableau a 2 entrées, alors on compare les cartes
+        if (app.clickedData.fruitsToCompare.length == 2) {
+            setTimeout(() => {
+                console.log("je rentre dans setTimeout");
+                console.log(`length = ${app.clickedData.fruitsToCompare.length}, on vérifie`);
+                console.log(`on compare les fruits suivants : ${app.clickedData.fruitsToCompare}`);
+
+                // Si les cartes ne correspondent pas, on les retourne
+                if (app.clickedData.fruitsToCompare[0] != app.clickedData.fruitsToCompare[1]) {
+                    console.log("liste des cartes cliquées", app.clickedData.clickedCards.length);
+                    console.log("ça ne correspond pas, on retourne les cartes");
+
+                    //retourner les cartes
+                    app.clickedData.clickedCards[0].classList.remove("board__cell--selected");
+                    app.clickedData.clickedCards[1].classList.remove("board__cell--selected");
+
+                    // on vide la liste des fruits à comparer
+                    app.clickedData.fruitsToCompare = [];
+                    console.log("on vide la liste des fruits à comparer et on continue: " , app.clickedData.fruitsToCompare);
+
+                    // on vide la liste des cartes cliquées
+                    app.clickedData.clickedCards = [];
+                    console.log("la liste des cartes cliquées est vidée: " , app.clickedData.clickedCards);
+                }
+                // sinon on les laisse affichées 
+                else {
+                    console.log("ça matche ! On garde les fruits affichés");
+
+                    // incrémenter le nb de paires trouvées
+                    app.partyData.found++;
+                    // on vide la liste des fruits sélectionnés
+                    app.clickedData.fruitsToCompare = [];
+                    // on vide la liste des cartes cliquées
+                    app.clickedData.clickedCards = [];
+
+                    console.log("la liste des fruits à comparer est vidée: " , app.clickedData.fruitsToCompare);
+                    console.log("la liste des cartes cliquées est vidée: " , app.clickedData.clickedCards);
+
+                    // Voir si c'est gagné en vérifiant si on a trouvé toutes les paires
+                    if (app.partyData.found === app.config.totalPairsToFind) {
+                        console.log("on compare le temps avec le meilleur temps");
+
+                        // 1. Envoi du chrono en DB si c'est le meilleur temps
+                        // Vérifier si c'est un nouveau highscore
+                        if (app.timer.result < app.timer.bestChrono) {
+                            console.log("youhou, nouveau best score !");
+
+                            // Envoyer en DB
+                            app.updateBestChrono();
+                        }
+                        // 2. Prévenir le joueur
+                        alert(`Bravo, c'est gagné en ${app.timer.result} secondes !`);
+                    }
+                }
+            },500);
+            // console.log("liste des events après vérif: ", app.clickedData.clickedCards);
+        } else {
+            console.log( "dans le else, nb de fruits à comparer: ",app.clickedData.fruitsToCompare.length);
+        }
+
+    },
+
 
  
 };
