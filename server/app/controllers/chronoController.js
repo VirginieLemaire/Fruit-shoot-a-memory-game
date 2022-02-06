@@ -29,10 +29,10 @@ const chronoControler = {
      * 
      */
     updateChrono: async (request, response) => {
-        /*  Vérification que le code arrive ici
-        console.log("je suis dans le controller updateChrono"); */
+        /*  Vérification que le code arrive ici*/
+        console.log("je suis dans le controller updateChrono"); 
         try {
-            console.log(request.body);
+            console.log("request.body", request.body);
             
             // récupérer l'info arrivant du client et créer un objet pour instancier la classe
             const data = {

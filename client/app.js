@@ -325,6 +325,7 @@ const app = {
      * chrono en DB
      */
     updateBestChrono: async() => {
+        console.log("je suis dans updateBestChrono");
         const result = await fetch('http://localhost:3000/', {
             method: 'PATCH',
             // Type de données envoyées

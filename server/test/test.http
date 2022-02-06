@@ -1,0 +1,12 @@
+
+
+### --- Afficher le meilleur chrono 
+GET http://localhost:3000/
+
+### --- Mettre à jour le meilleur chrono
+PATCH http://localhost:3000/
+Content-Type: application/json
+
+{
+    "chrono": "90"
+}
