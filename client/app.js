@@ -279,7 +279,30 @@ const app = {
         givenTime.textContent= `${app.config.givenTime} s.`;
 
         // 2. Affficher le meilleur chrono
-
+        app.getBestChrono();
+    },
+    /**
+     * Méthode pour récupérer le meilleur chrono
+     * enregistré en DB
+     */
+    getBestChrono: async() => {
+        try {
+            // 1. Aller chercher le meilleur chrono
+            //1.a requête fetch à l'API
+            const result = await fetch('http://localhost:3000/');
+            // 1.b récupérer les infos renvoyées par l'API
+            const bestChrono = await result.json();
+            console.log("bestChrono: ",bestChrono);
+            // 2. Afficher le meilleur chrono sur la page
+            // 2.a récupérer l'elément DOM
+            const bestElement = document.getElementById('best');
+            // 2.b lui ajouter du texte
+            bestElement.textContent= `${bestChrono} s.`;
+            // 2.c stocker le chrono dans l'app
+            app.timer.bestChrono = bestChrono;
+        } catch (error) {
+            console.trace(error);
+        }
     },
 
 
