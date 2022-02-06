@@ -1,4 +1,4 @@
-# Fruit shoot, un jeu de memory fruité
+# 🎮 Fruit shoot, un jeu de memory fruité 🎮 
 
 Il 'agit ici d'un jeu de memory dans un temps limité : il faut retrouver les paires de fruits avant que la barre du temps ne soit remplie!
 
@@ -25,6 +25,14 @@ Le meilleur chrono s'affiche sur la page. Si vous avez gagné dans un temps plus
   - - [Express](https://expressjs.com/fr/)
   - Base de données [PostgreSQL](https://www.postgresql.org/download/) (v12 ou supérieure)
 - [Git](https://git-scm.com/downloads)
+
+## Organisation
+
+Le fichier index.html se trouve à la racine de l'application.
+
+Le code concernant les données à afficher dans le navigateur (données client) se trouve dans le dossier `client`.
+
+Le code concernant le stockage en base de données du meilleur temps se trouve dans le dossier `server`. Il s'agit ici d'une mini-mini base de données. On pourrait envisager à l'avenir d'ajouter des infos de joueur (sans forcément créer de compte, à la manière des jeux d'arcade 🎮 🕹️) 
 
 ## Installation
 
@@ -69,3 +77,7 @@ Jouer !
 ## Personnalisation
 
 Les données `app.config` qui se trouvent dans `client/app.js` permettent de modifier la taille de la grille et le temps imparti.
+
+## Infos
+
+Envoyer de coder le même projet ? Vous pouvez aller voir dans le dossier `Infos`, j'y ai décortiqué les tâches et mis à jour les différentes étapes (un pesudo-code qui est devenu plutôt littéraire au fur et à mesure de l'avancement 😬).

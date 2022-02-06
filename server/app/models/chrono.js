@@ -1,7 +1,7 @@
 // Récupérer la connexion à la base de données
 const client = require('../database');
 
-/* Création d'une classe correspondant à la table "chrono".
+/* Déclaration d'une classe Chrono correspondant à la table "chrono".
 Elle comprendra des méthodes permettant d'intéragir avec la base de données */
 class Chrono {
     /**
@@ -27,9 +27,12 @@ class Chrono {
         renvoie l'info */
         try {
             // Aller chercher l'info en base de données
+            /* On utilise le destructuring pour ne stocker que rows au lieu de
+            tout lo'objet result */
             const { rows } = await client.query('SELECT chrono FROM chrono WHERE id=1');
             console.log(rows); 
-            // Renvoyer l'info 
+
+            // Renvoyer l'info (pas besoin de tout envoyer, la donnée suffit dans notre cas)
             return rows[0].chrono;
 
         } catch (error) {
@@ -42,11 +45,15 @@ class Chrono {
 
     /** 
      * Mets à jour le meilleur chrono en base de données
-     * (la data à entrer passe par le construteur)
+     * (la donnée à entrer passe par le construteur)
      * @returns {int} le meilleur chrono
      */
     async update() {
         console.log("je suis dans le model update");
+        /* Pour éviter les attaques de type injections SQL, on utilise une requête préparée :
+        la requêtes utilise le principe des variables et ira chercher leur correspondance dans le tableau
+        qui est joint à la requête.
+        On retourne le chrono à des fins de vérification (facultatif) */
         const { rows } = await client.query('UPDATE chrono SET chrono=$1 WHERE id=$2 RETURNING chrono', [this.chrono, this.id]);
         console.log("rows[0].chrono: ", rows[0].chrono);
         return rows[0].chrono;
@@ -54,4 +61,5 @@ class Chrono {
 
 }
 
+// Export de la classe
 module.exports = Chrono;

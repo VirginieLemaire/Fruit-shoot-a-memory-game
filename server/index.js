@@ -21,6 +21,8 @@ const PORT = process.env.PORT;
 
 // Une fois tout defini on utilise le router
 app.use(router);
+/* Le router sert d'aiguillage : il dirige l'éxécution du code 
+vers les méthodes voulues pour réaliser l'action demandée */
 
 // LANCEMENT DU SERVEUR
 app.listen(PORT, () => {

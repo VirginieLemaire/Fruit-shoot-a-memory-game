@@ -6,6 +6,10 @@ const router = Router();
  * Récupérer le meilleur chrono
 */
 router.get('/', chronoController.findChrono);
+/* Ici on voit qu'en arrivant avec le verbe HTTP GET sur l'endpoint '/'
+le routeur dirige vers la méthode finChrono() du controller 
+chronoController */
+
 /**
  * Mettre à jour le meilleur chrono
  * @param

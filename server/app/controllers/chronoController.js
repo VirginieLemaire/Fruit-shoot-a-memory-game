@@ -4,6 +4,13 @@ ses méthodes */
 const Chrono = require('../models/chrono');
 
 const chronoControler = {
+    /**
+     * La méthode findChrono va transmettre la requête au modèle
+     * où la classe Chrono a été déclarée et attendre sa réponse.
+     * Pour ne pas tout bloquer on exécute le code en asynchrone
+     * avec les mots-clefs async et await
+     * @returns {Object} retourne le meilleur chrono
+     */
     findChrono : async (request, response) => {
         /* Vérification que le code arrive ici
         console.log("je suis dans le controller findChrono"); */
@@ -15,6 +22,12 @@ const chronoControler = {
             console.log(error);
         }
     },
+    /**
+     * Mise à jour du meilleur temps
+     * @param {Object} request un objet json envoyé dans le body
+     *  par le client
+     * 
+     */
     updateChrono: async (request, response) => {
         /*  Vérification que le code arrive ici
         console.log("je suis dans le controller updateChrono"); */

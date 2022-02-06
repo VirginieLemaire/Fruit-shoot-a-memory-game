@@ -236,7 +236,7 @@ const app = {
             },500);
             // console.log("liste des events après vérif: ", app.clickedData.clickedCards);
         } else {
-            console.log( "dans le else, nb de fruits à comparer: ",app.clickedData.fruitsToCompare.length);
+            console.log("dans le else, nb de fruits à comparer: ",app.clickedData.fruitsToCompare.length);
         }
 
     },
@@ -261,15 +261,18 @@ const app = {
         console.log("vous avez ", app.config.givenTime, " secondes");
         const grow = () => {
             if (app.timer.width <100) {
+                // Pour augmenter la taille de la barre
                 app.timer.width ++;
+                // Mettre à jour le résultat au fur et à mesure que la barre grandit
                 app.timer.result = app.config.givenTime * app.timer.width/100;
-                // la barre de décompte du temps
+
+                // modifier l'affichage de la barre de décompte du temps
                 const progressBar= document.querySelector("span");
                 //progressBar.textContent = `${app.timer.width}`;
                 progressBar.style.width = `${app.timer.width}%`;
             } else {
                 console.log(app.timer.result, " secondes");
-                // Prévenir
+                // Prévenir l'utilisateur
                 alert("Aïe, c'est perdu !");
                 // Stopper le chrono
                 clearInterval(interval);
