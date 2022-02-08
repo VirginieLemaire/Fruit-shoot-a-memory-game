@@ -85,10 +85,12 @@ Jouer !
 
 Les données `app.config` qui se trouvent dans `client/app.js` permettent de modifier la taille de la grille et le temps imparti.
 
+Modifier l'URL des fetch en lignes 305 et 329 du fichier client/app.js pour que ça corresponde à l'adresse de la base de données.
+
 ## Infos
 
-Envoyer de coder le même projet ? Vous pouvez aller voir dans le dossier `Infos`, j'y ai décortiqué les tâches et mis à jour les différentes étapes (un pesudo-code qui est devenu plutôt littéraire au fur et à mesure de l'avancement 😬).
+Envoyer de coder le même projet ? Vous pouvez aller voir dans le dossier [`Infos`](./Infos), j'y ai décortiqué les tâches et mis à jour les différentes étapes (un pesudo-code qui est devenu plutôt littéraire au fur et à mesure de l'avancement 😬).
 
 ## Deploiement 
 
-La partie client est hébergée sur Github (j'ai placé index.html à la racine à cet effet), la base de données sur Heroku.
+La partie client est hébergée sur Github (j'ai placé index.html à la racine à cet effet), la base de données sur Heroku (j'ai créé une petite fiche rapide placée dans le dossier [`Infos`](./Infos/Deployer-BDD-sur-Heroku.md).
