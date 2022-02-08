@@ -88,3 +88,7 @@ Les données `app.config` qui se trouvent dans `client/app.js` permettent de mod
 ## Infos
 
 Envoyer de coder le même projet ? Vous pouvez aller voir dans le dossier `Infos`, j'y ai décortiqué les tâches et mis à jour les différentes étapes (un pesudo-code qui est devenu plutôt littéraire au fur et à mesure de l'avancement 😬).
+
+## Deploiement 
+
+La partie client est hébergée sur Github (j'ai placé index.html à la racine à cet effet), la base de données sur Heroku.
