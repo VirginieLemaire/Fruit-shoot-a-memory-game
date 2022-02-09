@@ -2,6 +2,8 @@
 
 Il 'agit ici d'un jeu de memory dans un temps limité : il faut retrouver les paires de fruits avant que la barre du temps ne soit remplie!
 
+(site de démo : si le meilleur score ne s'affiche pas, rafraichir la page avant de jouer pour réveiller le serveur ;p )
+
 ## Comment jouer
 
 - Cliquez sur une carte dont la face est cachée pour voir apparaitre un fruit.
