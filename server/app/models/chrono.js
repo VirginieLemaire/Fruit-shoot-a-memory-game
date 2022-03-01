@@ -49,14 +49,21 @@ class Chrono {
      * @returns {int} le meilleur chrono
      */
     async update() {
-        console.log("je suis dans le model update");
-        /* Pour éviter les attaques de type injections SQL, on utilise une requête préparée :
-        la requêtes utilise le principe des variables et ira chercher leur correspondance dans le tableau
-        qui est joint à la requête.
-        On retourne le chrono à des fins de vérification (facultatif) */
-        const { rows } = await client.query('UPDATE chrono SET chrono=$1 WHERE id=$2 RETURNING chrono', [this.chrono, this.id]);
-        console.log("rows[0].chrono: ", rows[0].chrono);
-        return rows[0].chrono;
+        try {
+            console.log("je suis dans le model update");
+            /* Pour éviter les attaques de type injections SQL, on utilise une requête préparée :
+            la requêtes utilise le principe des variables et ira chercher leur correspondance dans le tableau
+            qui est joint à la requête.
+            On retourne le chrono à des fins de vérification (facultatif) */
+            const { rows } = await client.query('UPDATE chrono SET chrono=$1 WHERE id=$2 RETURNING chrono', [this.chrono, this.id]);
+            console.log("rows[0].chrono: ", rows[0].chrono);
+            return rows[0].chrono;
+        } catch (error) {
+            // Afficher l'info en console
+            console.log(error);
+            // Envoyer l'info au controller
+            throw new Error(error.detail ? error.detail : error.message);
+        }
     }
 
 }
