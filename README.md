@@ -35,6 +35,10 @@ Le meilleur chrono s'affiche sur la page. Si vous avez gagné dans un temps plus
   - Base de données [PostgreSQL](https://www.postgresql.org/download/) (v12 ou supérieure)
 - [Git](https://git-scm.com/downloads)
 
+## Deploiement 
+
+La partie client est hébergée sur Github (j'ai placé index.html à la racine à cet effet), l'API et la base de données sur Render (j'ai créé une petite fiche rapide placée dans le dossier [`Infos`](./Infos/Deployer-API-BDD-Render.md).
+
 ## Organisation
 
 Le fichier index.html se trouve à la racine de l'application.
@@ -51,7 +55,7 @@ Cloner le dépôt en local
 git clone <url du dépôt>
 ```
 
-Puis, de déplacer dans le dossier `/server` et installer les dépendances NPM
+Puis, se déplacer dans le dossier `/server` et installer les dépendances NPM
 
 ```bash
 npm install
@@ -91,8 +95,4 @@ Modifier l'URL des fetch en lignes 305 et 329 du fichier client/app.js pour que 
 
 ## Infos
 
-Envoyer de coder le même projet ? Vous pouvez aller voir dans le dossier [`Infos`](./Infos), j'y ai décortiqué les tâches et mis à jour les différentes étapes (un pesudo-code qui est devenu plutôt littéraire au fur et à mesure de l'avancement 😬).
-
-## Deploiement 
-
-La partie client est hébergée sur Github (j'ai placé index.html à la racine à cet effet), la base de données sur Heroku (j'ai créé une petite fiche rapide placée dans le dossier [`Infos`](./Infos/Deployer-BDD-sur-Heroku.md).
+Envoyer de coder le même projet ? Vous pouvez aller voir dans le dossier [`Infos`](./Infos), j'y ai décortiqué les tâches et mis à jour les différentes étapes (un pseudo-code qui est devenu plutôt littéraire au fur et à mesure de l'avancement 😬).

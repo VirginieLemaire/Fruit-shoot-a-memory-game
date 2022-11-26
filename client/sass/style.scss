@@ -17,18 +17,18 @@ En utilisant "*" on l'applique à tous les éléments */
 
 /* Le container contient toute l'application */
 .container {
-  width: 90%;
-  margin: 2rem auto;
   text-align: center;
   /* Les propriétés flex sont positionnées sur le parent
    pour indiquer comment doivent se positionner les enfants */
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 }
 
 .header {
   width: 100%;
+  height: 20vh;
   background-color: $blue;
   &__title {
     margin-bottom: 0;
@@ -38,12 +38,20 @@ En utilisant "*" on l'applique à tous les éléments */
     margin-top: 0;
     font-weight: normal;
   }
+  & h1 {
+    font-size: 3rem;
+  }
+  & h2 {
+    font-size: 1.5rem;
+  }
+
 }
 
 main {
   background-color: $light-blue;
   padding: 1rem;
   width: 100%;
+  height: 65vh;
 }
 
 .board {
@@ -71,42 +79,107 @@ main {
       /* affichage du deuxième fruit du sprite 
       https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Images/Implementing_image_sprites_in_CSS */
       //background-position-y: -100px;
+      background-size: calc(100%); /* ajuste la taille de à son contenu */
     }
   }
 }
 
 .timer {
-  width: 100%;
   background-color: $blue;
+  width: 100%;
+  height: 15vh;
+  /* on agence les éléments entre eux */
   display: flex;
-  justify-content: space-around;
+  justify-content: space-around; /* répartir les éléments horizontalement */
+  align-items: center; /* verticalement */
   &__info {
     font-weight: bold;
   }
   &__bar {
     width: 50%;
-    height: 20px;
+    height: 1.5rem;
     margin: 2rem 0;
     background-color: $yellow;
-    border-radius: 25px;
-    border: solid 1px $highlight;
+    border-radius: 1.5rem;
+    border: solid 0.1rem $highlight;
   }
   & span{
     /* l'élément span étant un élément en ligne (inline) par défaut,
     on le change en block pour qu'il puisse s'afficher */
     display: block;
     height: 100%;
-    border-radius: 20px;
+    border-radius: 1.3rem;
     background-color: $orange;
     /* la barre progresse chaque seconde, ajout d'une transition
     pour que ça soit plus fluide */
     transition: width 1s;
   }
+  & p {
+    /*margin: unset;*/
+    font-size: 1.5rem;
+  }
 }
 
-p {
-  margin-bottom: 0;
-  &~ p {
-    margin-top: 0;
+@media (orientation: portrait) {
+  .board {
+    writing-mode: vertical-rl;
+  }
+}
+@media (max-width: 900px) {
+  .header {
+    & h1 {
+      font-size: 1.7rem;
+      margin: 0;
+    }
+    & h2 {
+      font-size: 1rem;
+    }
+  }
+  .timer {
+    & p {
+      margin: unset;
+      font-size: 1rem;
+    }
+  }
+  .board {
+/*     background-color: $orange;
+    padding: 1rem;
+    width: fit-content;
+    margin: auto;
+  
+    &__row {
+      display: flex;
+      margin: auto;
+      width: fit-content;
+    } */
+    &__cell {
+      background-color: $yellow;
+      /* l'image de référence fait 49px de large :
+      on créé des carrés de la même taille */
+      width: calc(100px*0.5);
+      height: calc(100px*0.5);
+      margin: 2px;
+      /* ajout d'un style spécial lorsque la carte
+      est cliquée */
+      &--selected {
+        background-image: url('./image/cards.png');
+        /* affichage du deuxième fruit du sprite 
+        https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Images/Implementing_image_sprites_in_CSS */
+        //background-position-y: -100px;
+        background-size: calc(100%); /* ajuste la taille de à son contenu */
+      }
+    }
+  }
+}
+@media (max-width: 900px) and (orientation: landscape) {
+  .board__cell {
+    width: calc(100px*0.4);
+      height: calc(100px*0.4);
+  }
+  .timer {
+    & p {
+      margin: unset;
+      font-size: 0.8rem;
+    }
   }
 }

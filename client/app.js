@@ -95,7 +95,7 @@ const app = {
                 // Appliquer le style permettant d'afficher le fruit (voir affichage d'un sprite)
                 // astuce : on enlève 1 au numéro de fruit pour coincider avec la position
                 // dans le sprite -> le fruit 1 est positionné à y=0
-                cell.style.backgroundPositionY = `${(app.partyData.fruitsList[app.config.cellId - 1]-1) * -100}px`;
+                cell.style.backgroundPositionY = `${(app.partyData.fruitsList[app.config.cellId - 1]-1) * -100}%`;
                 
                 // ajouter la carte à la ligne qui vient d'ête créée
                 row.appendChild(cell);

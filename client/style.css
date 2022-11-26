@@ -13,18 +13,18 @@ En utilisant "*" on l'applique à tous les éléments */
 
 /* Le container contient toute l'application */
 .container {
-  width: 90%;
-  margin: 2rem auto;
   text-align: center;
   /* Les propriétés flex sont positionnées sur le parent
    pour indiquer comment doivent se positionner les enfants */
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 }
 
 .header {
   width: 100%;
+  height: 20vh;
   background-color: #219EBC;
 }
 .header__title {
@@ -35,11 +35,18 @@ En utilisant "*" on l'applique à tous les éléments */
   margin-top: 0;
   font-weight: normal;
 }
+.header h1 {
+  font-size: 3rem;
+}
+.header h2 {
+  font-size: 1.5rem;
+}
 
 main {
   background-color: #8ECAE6;
   padding: 1rem;
   width: 100%;
+  height: 65vh;
 }
 
 .board {
@@ -67,42 +74,107 @@ main {
   background-image: url("./image/cards.png");
   /* affichage du deuxième fruit du sprite 
   https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Images/Implementing_image_sprites_in_CSS */
+  background-size: 100%;
+  /* ajuste la taille de à son contenu */
 }
 
 .timer {
-  width: 100%;
   background-color: #219EBC;
+  width: 100%;
+  height: 15vh;
+  /* on agence les éléments entre eux */
   display: flex;
   justify-content: space-around;
+  /* répartir les éléments horizontalement */
+  align-items: center;
+  /* verticalement */
 }
 .timer__info {
   font-weight: bold;
 }
 .timer__bar {
   width: 50%;
-  height: 20px;
+  height: 1.5rem;
   margin: 2rem 0;
   background-color: #FFB703;
-  border-radius: 25px;
-  border: solid 1px white;
+  border-radius: 1.5rem;
+  border: solid 0.1rem white;
 }
 .timer span {
   /* l'élément span étant un élément en ligne (inline) par défaut,
   on le change en block pour qu'il puisse s'afficher */
   display: block;
   height: 100%;
-  border-radius: 20px;
+  border-radius: 1.3rem;
   background-color: #FB8500;
   /* la barre progresse chaque seconde, ajout d'une transition
   pour que ça soit plus fluide */
   transition: width 1s;
 }
-
-p {
-  margin-bottom: 0;
+.timer p {
+  /*margin: unset;*/
+  font-size: 1.5rem;
 }
-p ~ p {
-  margin-top: 0;
+
+@media (orientation: portrait) {
+  .board {
+    writing-mode: vertical-rl;
+  }
+}
+@media (max-width: 900px) {
+  .header h1 {
+    font-size: 1.7rem;
+    margin: 0;
+  }
+  .header h2 {
+    font-size: 1rem;
+  }
+
+  .timer p {
+    margin: unset;
+    font-size: 1rem;
+  }
+
+  .board {
+    /*     background-color: $orange;
+        padding: 1rem;
+        width: fit-content;
+        margin: auto;
+
+        &__row {
+          display: flex;
+          margin: auto;
+          width: fit-content;
+        } */
+  }
+  .board__cell {
+    background-color: #FFB703;
+    /* l'image de référence fait 49px de large :
+    on créé des carrés de la même taille */
+    width: 50px;
+    height: 50px;
+    margin: 2px;
+    /* ajout d'un style spécial lorsque la carte
+    est cliquée */
+  }
+  .board__cell--selected {
+    background-image: url("./image/cards.png");
+    /* affichage du deuxième fruit du sprite 
+    https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Images/Implementing_image_sprites_in_CSS */
+    background-size: 100%;
+    /* ajuste la taille de à son contenu */
+  }
+}
+@media (max-width: 900px) and (orientation: landscape) {
+  .board__cell {
+    width: 40px;
+    height: 40px;
+  }
+
+  .timer p {
+    margin: unset;
+    font-size: 0.8rem;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

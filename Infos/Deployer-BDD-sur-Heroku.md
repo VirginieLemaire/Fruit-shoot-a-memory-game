@@ -2,7 +2,7 @@
 
 ## Prérequis
 
-- avoir un compte (gratuit)
+- avoir un compte (Heroku ne sera plus gratuit à partir du 28 nov. 2022)
 - avoir installé [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli) en global
 
 ## Créer une app Heroku
