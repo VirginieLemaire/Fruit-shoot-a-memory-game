@@ -302,7 +302,7 @@ const app = {
         try {
             // 1. Aller chercher le meilleur chrono
             // 1.a requête fetch à l'API
-            const result = await fetch('https://fruit-shoot-memory.herokuapp.com/');
+            const result = await fetch('https://fruit-shoot-memory-game.onrender.com/');
             // 1.b récupérer les infos renvoyées par l'API
             const bestChrono = await result.json();
             console.log("bestChrono: ",bestChrono);
@@ -326,7 +326,7 @@ const app = {
      */
     updateBestChrono: async() => {
         console.log("je suis dans updateBestChrono");
-        const result = await fetch('https://fruit-shoot-memory.herokuapp.com/', {
+        const result = await fetch('https://fruit-shoot-memory-game.onrender.com/', {
             method: 'PATCH',
             // Type de données envoyées
             headers: {'Content-Type': 'application/json;charset=utf-8'},
